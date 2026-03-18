@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support — Nusantara Food Agent</title>
+<meta name="description" content="Support and FAQ for Nusantara Food Agent. Get help with TikTok integration, data privacy, and account management.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0b08;
+    --surface: #161108;
+    --card: #1c1510;
+    --border: #2e2318;
+    --text: #f5f0e8;
+    --muted: #8a7d6a;
+    --accent: #e8541a;
+    --gold: #d4a847;
+    --cream: #f5edd8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(to bottom, rgba(14,11,8,0.95), transparent);
+    backdrop-filter: blur(8px);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--text); }
+
+  /* PAGE HERO */
+  .page-hero {
+    padding: 160px 48px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-hero::before {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(232,84,26,0.08) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .page-hero::after {
+    content: '';
+    position: absolute;
+    inset: 40px;
+    border: 1px solid rgba(212,168,71,0.06);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(212,168,71,0.08);
+    border: 1px solid rgba(212,168,71,0.2);
+    color: var(--gold);
+    padding: 8px 20px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .page-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+
+  .page-hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .page-hero p {
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 520px;
+    margin: 0 auto;
+    font-weight: 300;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  /* SECTION */
+  .section {
+    padding: 80px 48px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+
+  .section-sub {
+    color: var(--muted);
+    font-size: 16px;
+    max-width: 520px;
+    font-weight: 300;
+    margin-bottom: 48px;
+    line-height: 1.7;
+  }
+
+  /* FAQ */
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .faq-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .faq-item:hover { border-color: rgba(212,168,71,0.25); }
+
+  .faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 22px 28px;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    transition: color 0.2s;
+  }
+  .faq-question:hover { color: var(--gold); }
+
+  .faq-chevron {
+    color: var(--muted);
+    font-size: 18px;
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+
+  .faq-item.open .faq-chevron { transform: rotate(180deg); }
+  .faq-item.open .faq-question { color: var(--gold); }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+
+  .faq-item.open .faq-answer { max-height: 400px; }
+
+  .faq-answer-inner {
+    padding: 0 28px 24px;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.75;
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+  }
+
+  .faq-answer-inner a { color: var(--accent); text-decoration: none; }
+  .faq-answer-inner a:hover { text-decoration: underline; }
+
+  /* CONTACT CARDS */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+
+  .contact-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px 28px;
+    transition: border-color 0.25s, transform 0.25s;
+    text-decoration: none;
+    display: block;
+  }
+  .contact-card:hover { border-color: rgba(212,168,71,0.3); transform: translateY(-3px); }
+
+  .contact-icon { font-size: 36px; margin-bottom: 16px; display: block; }
+
+  .contact-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+
+  .contact-card p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .contact-cta {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+  }
+
+  /* DATA RIGHTS */
+  .rights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+
+  .right-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+
+  .right-card .right-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .right-card h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+
+  .right-card p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* REVOKE BOX */
+  .revoke-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 12px 12px 0;
+    padding: 28px 32px;
+    margin-top: 32px;
+  }
+
+  .revoke-box h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text);
+  }
+
+  .revoke-box p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .steps-inline {
+    list-style: none;
+    margin-top: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .steps-inline li {
+    font-size: 13px;
+    color: var(--muted);
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .steps-inline li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* DIVIDER */
+  .line-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0 48px;
+  }
+
+  /* FOOTER */
+  .legal-bar {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 32px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .legal-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: var(--gold);
+  }
+
+  .legal-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .legal-links a {
+    color: var(--muted);
+    font-size: 13px;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .legal-links a:hover { color: var(--text); }
+
+  .legal-copy {
+    font-size: 12px;
+    color: #3d342a;
+    width: 100%;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 600px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .page-hero { padding: 120px 24px 60px; }
+    .section { padding: 56px 24px; }
+    .legal-bar { padding: 24px; }
+    .line-divider { margin: 0 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">🍜 Nusantara Food Agent</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="support.html" class="active">Support</a></li>
+    <li><a href="https://0xgoryu.github.io/nusantara-agent-legal/tos.html">Terms</a></li>
+    <li><a href="https://0xgoryu.github.io/nusantara-agent-legal/privacy.html">Privacy</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-eyebrow"><span>🛟</span> Support</div>
+  <h1>How Can We<br><em>Help You?</em></h1>
+  <p>Find answers to common questions about Nusantara Food Agent, TikTok integration, and your data rights.</p>
+</div>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="reveal">
+    <div class="section-label">FAQ</div>
+    <h2>Frequently Asked Questions</h2>
+    <p class="section-sub">Everything you need to know about how Nusantara Food Agent works.</p>
+  </div>
+
+  <div class="faq-list reveal">
+
+    <div class="faq-item">
+      <button class="faq-question">
+        What does Nusantara Food Agent do?
+        <span class="faq-chevron">▾</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          Nusantara Food Agent is an automated content tool that generates traditional Indonesian recipe videos and publishes them to TikTok automatically. It runs a full AI pipeline — recipe writing, food image generation, Indonesian voiceover, and video rendering — then posts the finished video to your connected TikTok account up to 3 times per day.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        What TikTok permissions does this app require?
+        <span class="faq-chevron">▾</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          The app requests three scopes: <strong>user.info.basic</strong> to identify your TikTok account, <strong>video.upload</strong> to upload the video file, and <strong>video.publish</strong> to publish the video as a post. We do not access your followers, messages, liked videos, or any other account data.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        How do I revoke the app's access to my TikTok account?
+        <span class="faq-chevron">▾</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          You can revoke access at any time directly from TikTok:<br><br>
+          <strong>On mobile:</strong> TikTok app → Profile → Menu (☰) → Settings → Security → Authorized Apps → find Nusantara Food Agent → Remove access.<br><br>
+          <strong>On desktop:</strong> tiktok.com → Profile → Settings → Security → Manage account access → Revoke.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Does the app store my TikTok password or personal data?
+        <span class="faq-chevron">▾</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          No. We never see or store your TikTok password. Authentication is handled entirely by TikTok's OAuth 2.0 system — we only receive an access token that allows posting on your behalf. This token is stored securely in server environment variables and is never exposed publicly. See our <a href="https://0xgoryu.github.io/nusantara-agent-legal/privacy.html">Privacy Policy</a> for full details.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Why did my posting stop working?
+        <span class="faq-chevron">▾</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          The most common cause is an expired access token. TikTok access tokens expire every 24 hours. The app includes an automatic token refresh system, but if the refresh also fails (e.g. you revoked access or the refresh token expired after 365 days), you will need to re-authorize the app by running the OAuth setup again.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Can I request deletion of my data?
+        <span class="faq-chevron">▾</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          Yes. Since we only store your TikTok access token and open ID, revoking the app's access from TikTok settings (see above) immediately invalidates all tokens. No residual data is retained after revocation. For explicit deletion requests, contact us at <a href="mailto:arridloriziq@gmail.com">arridloriziq@gmail.com</a>.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        What types of content does the app post?
+        <span class="faq-chevron">▾</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          The app posts 60-second vertical video content about traditional Indonesian (Nusantara) recipes. Videos include AI-generated food images, Bahasa Indonesia voiceover narration, animated text overlays with ingredients and cooking steps, and a caption with relevant food hashtags. All content is culinary and educational in nature.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="line-divider">
+
+<!-- DATA RIGHTS -->
+<section class="section">
+  <div class="reveal">
+    <div class="section-label">Your Rights</div>
+    <h2>Data & Privacy Controls</h2>
+    <p class="section-sub">You are in full control of your data and the app's access to your TikTok account.</p>
+  </div>
+
+  <div class="rights-grid reveal">
+    <div class="right-card">
+      <span class="right-icon">👁️</span>
+      <h4>Right to Know</h4>
+      <p>We only store your TikTok access token and open ID. Nothing else. Read our full <a href="https://0xgoryu.github.io/nusantara-agent-legal/privacy.html" style="color:var(--accent)">Privacy Policy</a>.</p>
+    </div>
+    <div class="right-card">
+      <span class="right-icon">🗑️</span>
+      <h4>Right to Delete</h4>
+      <p>Revoke app access from TikTok settings and all tokens are immediately invalidated and deleted.</p>
+    </div>
+    <div class="right-card">
+      <span class="right-icon">🚫</span>
+      <h4>Right to Opt Out</h4>
+      <p>Stop the app from posting at any time by revoking access or stopping the scheduler on your server.</p>
+    </div>
+    <div class="right-card">
+      <span class="right-icon">✉️</span>
+      <h4>Right to Contact</h4>
+      <p>For any data request or concern, email us and we will respond within 7 business days.</p>
+    </div>
+  </div>
+
+  <div class="revoke-box reveal">
+    <h3>How to Revoke TikTok Access</h3>
+    <p>Remove Nusantara Food Agent's access to your TikTok account in three steps:</p>
+    <ul class="steps-inline">
+      <li>Open TikTok app → go to Profile → tap the menu icon (☰) in the top right</li>
+      <li>Go to Settings → Security → Authorized Apps</li>
+      <li>Find "Nusantara Food Agent" → tap Remove Access</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="line-divider">
+
+<!-- CONTACT -->
+<section class="section">
+  <div class="reveal">
+    <div class="section-label">Get in Touch</div>
+    <h2>Contact & Support</h2>
+    <p class="section-sub">Can't find what you're looking for? Reach out directly.</p>
+  </div>
+
+  <div class="contact-grid reveal">
+    <a href="mailto:arridloriziq@gmail.com" class="contact-card">
+      <span class="contact-icon">📧</span>
+      <h3>Email Support</h3>
+      <p>For general questions, data requests, or technical issues with the integration.</p>
+      <div class="contact-cta">arridloriziq@gmail.com →</div>
+    </a>
+    <a href="https://0xgoryu.github.io/nusantara-agent-legal/privacy.html" class="contact-card">
+      <span class="contact-icon">🔒</span>
+      <h3>Privacy Policy</h3>
+      <p>Full details on what data we collect, how it is used, and your rights as a user.</p>
+      <div class="contact-cta">Read Privacy Policy →</div>
+    </a>
+    <a href="https://0xgoryu.github.io/nusantara-agent-legal/tos.html" class="contact-card">
+      <span class="contact-icon">📄</span>
+      <h3>Terms of Service</h3>
+      <p>The terms governing use of Nusantara Food Agent and its TikTok integration.</p>
+      <div class="contact-cta">Read Terms →</div>
+    </a>
+  </div>
+</section>
+
+<footer class="legal-bar">
+  <div class="legal-brand">🍜 Nusantara Food Agent</div>
+  <ul class="legal-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="https://0xgoryu.github.io/nusantara-agent-legal/tos.html">Terms of Service</a></li>
+    <li><a href="https://0xgoryu.github.io/nusantara-agent-legal/privacy.html">Privacy Policy</a></li>
+    <li><a href="mailto:arridloriziq@gmail.com">Contact</a></li>
+  </ul>
+  <div class="legal-copy">© 2026 Nusantara Food Agent. All rights reserved.</div>
+</footer>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
