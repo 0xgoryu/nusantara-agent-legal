@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connect Your Account — Nusantara Food Agent</title>
+<meta name="description" content="Connect your TikTok account to Nusantara Food Agent and start automating your Indonesian recipe content.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0b08;
+    --surface: #161108;
+    --card: #1c1510;
+    --border: #2e2318;
+    --text: #f5f0e8;
+    --muted: #8a7d6a;
+    --accent: #e8541a;
+    --gold: #d4a847;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  nav {
+    padding: 20px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gold);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* MAIN */
+  .main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 24px;
+    position: relative;
+  }
+
+  .main::before {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(232,84,26,0.08) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .login-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 56px 48px;
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .login-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    border: 1px solid rgba(212,168,71,0.08);
+    pointer-events: none;
+  }
+
+  .app-icon {
+    font-size: 48px;
+    display: block;
+    margin-bottom: 24px;
+  }
+
+  .login-card h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+
+  .login-card h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .login-subtitle {
+    font-size: 15px;
+    color: var(--muted);
+    margin-bottom: 40px;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* TikTok Connect Button */
+  .btn-tiktok {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    width: 100%;
+    background: #ffffff;
+    color: #000000;
+    padding: 16px 28px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 16px;
+  }
+  .btn-tiktok:hover {
+    background: #f0f0f0;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  }
+
+  .tiktok-logo {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 24px 0;
+    color: var(--muted);
+    font-size: 12px;
+  }
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* What happens section */
+  .what-happens {
+    text-align: left;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-top: 28px;
+  }
+
+  .what-happens h3 {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  .what-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .what-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .what-list li .check {
+    color: #4ade80;
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .what-list li .cross {
+    color: #f87171;
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .privacy-note {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 24px;
+    line-height: 1.6;
+  }
+
+  .privacy-note a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .privacy-note a:hover { text-decoration: underline; }
+
+  /* PERMISSIONS section */
+  .permissions {
+    margin-top: 32px;
+    text-align: left;
+  }
+
+  .permissions h3 {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .scope-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .scope-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+  }
+
+  .scope-badge {
+    font-family: monospace;
+    font-size: 11px;
+    color: var(--gold);
+    background: rgba(212,168,71,0.1);
+    border: 1px solid rgba(212,168,71,0.2);
+    padding: 2px 8px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  .scope-desc {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* Footer */
+  footer {
+    padding: 24px 48px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-copy {
+    font-size: 12px;
+    color: #3d342a;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--text); }
+
+  @media (max-width: 600px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .login-card { padding: 36px 24px; }
+    footer { padding: 20px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://0xgoryu.github.io/nusantara-agent-legal/" class="nav-logo">🍜 Nusantara Food Agent</a>
+  <ul class="nav-links">
+    <li><a href="https://0xgoryu.github.io/nusantara-agent-legal/">Home</a></li>
+    <li><a href="https://0xgoryu.github.io/nusantara-agent-legal/about.html">About</a></li>
+    <li><a href="https://0xgoryu.github.io/nusantara-agent-legal/support.html">Support</a></li>
+  </ul>
+</nav>
+
+<main class="main">
+  <div class="login-card">
+
+    <span class="app-icon">🍜</span>
+
+    <h1>Connect Your<br><em>TikTok Account</em></h1>
+    <p class="login-subtitle">
+      Authorize Nusantara Food Agent to automatically publish Indonesian recipe videos to your TikTok account.
+    </p>
+
+    <!-- TikTok OAuth Button -->
+    <a href="#" class="btn-tiktok" id="tiktok-connect-btn" onclick="startTikTokAuth(); return false;">
+      <svg class="tiktok-logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.28 8.28 0 004.84 1.55V6.79a4.85 4.85 0 01-1.07-.1z" fill="#000000"/>
+      </svg>
+      Continue with TikTok
+    </a>
+
+    <div class="divider">What you're authorizing</div>
+
+    <!-- Permissions -->
+    <div class="scope-grid">
+      <div class="scope-item">
+        <span class="scope-badge">user.info.basic</span>
+        <span class="scope-desc">Identify your TikTok account</span>
+      </div>
+      <div class="scope-item">
+        <span class="scope-badge">video.upload</span>
+        <span class="scope-desc">Upload recipe videos to TikTok</span>
+      </div>
+      <div class="scope-item">
+        <span class="scope-badge">video.publish</span>
+        <span class="scope-desc">Publish videos to your profile</span>
+      </div>
+    </div>
+
+    <!-- What we do / don't do -->
+    <div class="what-happens">
+      <h3>What we access</h3>
+      <ul class="what-list">
+        <li><span class="check">✓</span> Post AI-generated recipe videos on your behalf</li>
+        <li><span class="check">✓</span> Access your TikTok Open ID to identify your account</li>
+        <li><span class="cross">✗</span> We never read your messages or followers</li>
+        <li><span class="cross">✗</span> We never access your liked videos or private data</li>
+        <li><span class="cross">✗</span> We never sell or share your account data</li>
+      </ul>
+    </div>
+
+    <p class="privacy-note">
+      By connecting, you agree to our
+      <a href="https://0xgoryu.github.io/nusantara-agent-legal/tos.html">Terms of Service</a>
+      and
+      <a href="https://0xgoryu.github.io/nusantara-agent-legal/privacy.html">Privacy Policy</a>.
+      You can revoke access at any time from TikTok Settings → Security → Authorized Apps.
+    </p>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-copy">© 2026 Nusantara Food Agent. All rights reserved.</div>
+  <ul class="footer-links">
+    <li><a href="https://0xgoryu.github.io/nusantara-agent-legal/tos.html">Terms</a></li>
+    <li><a href="https://0xgoryu.github.io/nusantara-agent-legal/privacy.html">Privacy</a></li>
+    <li><a href="mailto:arridloriziq@gmail.com">Contact</a></li>
+  </ul>
+</footer>
+
+<script>
+  function startTikTokAuth() {
+    // Ganti CLIENT_KEY dengan TikTok Client Key kamu
+    const CLIENT_KEY = 'YOUR_TIKTOK_CLIENT_KEY';
+    const REDIRECT_URI = encodeURIComponent('https://0xgoryu.github.io/nusantara-agent-legal/callback.html');
+    const SCOPE = encodeURIComponent('user.info.basic,video.upload,video.publish');
+    const STATE = Math.random().toString(36).substring(2);
+
+    // Simpan state untuk verifikasi callback
+    sessionStorage.setItem('tiktok_oauth_state', STATE);
+
+    const authUrl = `https://www.tiktok.com/v2/auth/authorize/?client_key=${CLIENT_KEY}&scope=${SCOPE}&response_type=code&redirect_uri=${REDIRECT_URI}&state=${STATE}`;
+
+    // Redirect ke TikTok OAuth
+    window.location.href = authUrl;
+  }
+</script>
+
+</body>
+</html>

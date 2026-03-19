@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Authorization Successful — Nusantara Food Agent</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0b08;
+    --surface: #161108;
+    --card: #1c1510;
+    --border: #2e2318;
+    --text: #f5f0e8;
+    --muted: #8a7d6a;
+    --accent: #e8541a;
+    --gold: #d4a847;
+    --green: #4ade80;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 56px 48px;
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .success-icon {
+    width: 72px;
+    height: 72px;
+    background: rgba(74,222,128,0.12);
+    border: 2px solid rgba(74,222,128,0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 28px;
+    font-size: 32px;
+    animation: pop 0.4s ease both;
+  }
+
+  @keyframes pop {
+    from { transform: scale(0.7); opacity: 0; }
+    to   { transform: scale(1);   opacity: 1; }
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  h1 em { font-style: italic; color: var(--green); }
+
+  .subtitle {
+    font-size: 15px;
+    color: var(--muted);
+    margin-bottom: 36px;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* Code box for developer */
+  .code-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: left;
+    margin-bottom: 28px;
+  }
+
+  .code-box h3 {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .code-line {
+    font-family: monospace;
+    font-size: 12px;
+    color: var(--gold);
+    word-break: break-all;
+    line-height: 1.8;
+  }
+
+  .code-line span {
+    color: var(--muted);
+    font-size: 11px;
+  }
+
+  .next-steps {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    text-align: left;
+    margin-bottom: 24px;
+  }
+
+  .next-steps h3 {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .step-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .step-list li {
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .step-num {
+    background: rgba(232,84,26,0.15);
+    color: var(--accent);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .btn-home {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    padding: 12px 28px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-home:hover { background: #d44010; transform: translateY(-1px); }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="success-icon">✓</div>
+
+  <h1>Authorization<br><em>Successful!</em></h1>
+  <p class="subtitle">
+    Your TikTok account has been connected to Nusantara Food Agent. The agent can now publish recipe videos on your behalf.
+  </p>
+
+  <!-- Show the auth code for developer to see -->
+  <div class="code-box">
+    <h3>Authorization received</h3>
+    <div id="code-display">
+      <div class="code-line" id="code-value">Loading...</div>
+      <div class="code-line" id="state-value" style="margin-top:6px"></div>
+    </div>
+    <p style="font-size:11px;color:var(--muted);margin-top:10px;">Copy the full URL from your browser address bar and paste it into the terminal running oauth-setup.js</p>
+  </div>
+
+  <div class="next-steps">
+    <h3>What happens next</h3>
+    <ul class="step-list">
+      <li><span class="step-num">1</span>Copy the full page URL from your browser address bar</li>
+      <li><span class="step-num">2</span>Paste it into the terminal running <code style="color:var(--gold);font-size:11px">oauth-setup.js</code></li>
+      <li><span class="step-num">3</span>The agent will exchange the code for an access token</li>
+      <li><span class="step-num">4</span>Add the tokens to your <code style="color:var(--gold);font-size:11px">.env</code> file</li>
+      <li><span class="step-num">5</span>Run <code style="color:var(--gold);font-size:11px">npm start</code> — the agent will begin posting automatically</li>
+    </ul>
+  </div>
+
+  <a href="https://0xgoryu.github.io/nusantara-agent-legal/" class="btn-home">Back to Home</a>
+</div>
+
+<script>
+  // Parse URL params and display them
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get('code');
+  const state = params.get('state');
+  const error = params.get('error');
+
+  const codeEl = document.getElementById('code-value');
+  const stateEl = document.getElementById('state-value');
+
+  if (error) {
+    codeEl.innerHTML = '<span style="color:#f87171">Authorization failed: ' + error + '</span>';
+  } else if (code) {
+    codeEl.innerHTML = '<span style="color:var(--muted)">code: </span>' + code.substring(0, 20) + '...';
+    stateEl.innerHTML = '<span style="color:var(--muted)">state: </span>' + (state || 'n/a');
+  } else {
+    codeEl.innerHTML = '<span style="color:var(--muted)">Waiting for authorization code...</span>';
+  }
+</script>
+
+</body>
+</html>
